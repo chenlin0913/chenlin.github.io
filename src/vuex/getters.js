@@ -10,3 +10,6 @@ export const id = state =>state.current.id
 export const playUrl = state =>state.current.playUrl
 export const playState = state =>state.playState
 export const isThereAnyLyric = state =>state.lyrics.isThereAnyLyric
+export const al = state => state.current.detail.al
+export const ar = state => state.current.detail.ar
+export const palyName = state => state.current.detail.name

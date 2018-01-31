@@ -5,6 +5,11 @@ const state = {
 	current:{
 		id:'',//当前播放音乐ID
 		playUrl:'',//当前播放音乐路径
+		detail:{//当前播放音乐详情
+			al:{picUrl:'static/img/player-bar.png'},//id:播放歌曲详情ID,name:播放歌曲详情类型名称,pic:播放歌曲详情图片ID,picUrl:播放歌曲详情图片
+			ar:{},//id:播放歌曲详情id,name:播放歌曲详情演唱者
+			name:'',//播放歌曲详情名称
+		}
 	},
 	lyrics:{
 		lyricsData:'[00:00.00]歌词加载中!',//歌词

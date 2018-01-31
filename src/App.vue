@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-  	<command icon="../static/img/Music.ico">
     <router-view/>
   </div>
 </template>
@@ -22,6 +21,7 @@ caption,th {text-align:left}
 h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:normal} 
 q:before,q:after {content:''} 
 abbr,acronym { border:0}
+input{border:0;outline:none;}
 .times-cl {
 		font-size: 10px;
 	}

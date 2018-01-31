@@ -81,7 +81,7 @@
 
 .icon-font-cl-zanting1:before { content: "\e6ba"; }
 
-.icon-font-cl-bofang2:before { content: "\e653"; }
+.icon-font-cl-bofang2:before { content: "\e653"; color: white;font-size: 15px;}
 
 .icon-font-cl-shangyishoushangyige:before { content: "\e78a"; }
 
@@ -95,7 +95,7 @@
 
 .icon-font-cl-weibiaoti519:before { content: "\e616"; }
 
-.icon-font-cl-ai07:before { content: "\e67b"; }
+.icon-font-cl-ai07:before { content: "\e67b"; color: white;font-size: 15px;}
 
 .icon-font-cl-xiayishou:before { content: "\e606"; }
 
@@ -107,7 +107,7 @@
 
 .icon-font-cl-bofang4:before { content: "\e60e"; }
 
-.icon-font-cl-swticonyinle2:before { content: "\e614"; }
+.icon-font-cl-swticonyinle2:before { content: "\e614"; color: white;font-size: 12px;}
 
 .icon-font-cl-yinle3:before { content: "\e603"; }
 
@@ -125,9 +125,9 @@
 
 .icon-font-cl-xiayishou3:before { content: "\e647"; }
 
-.icon-font-cl-xiayishou4:before { content: "\e604"; }
+.icon-font-cl-xiayishou4:before { content: "\e604"; color: white;font-size: 15px;}
 
-.icon-font-cl-shangyishou2:before { content: "\e605"; }
+.icon-font-cl-shangyishou2:before { content: "\e605"; color: white;font-size: 15px;}
 
 .icon-font-cl-bofangqishouqi:before { content: "\e65a"; }
 
@@ -147,13 +147,13 @@
 
 .icon-font-cl-laba2:before { content: "\e628"; }
 
-.icon-font-cl-laba3:before { content: "\e643"; }
+.icon-font-cl-laba3:before { content: "\e643"; color: white;font-size: 12px;}
 
 .icon-font-cl-zanting5:before { content: "\e87a"; }
 
-.icon-font-cl-mute_icon:before { content: "\e666"; }
+.icon-font-cl-mute_icon:before { content: "\e666"; color: white;font-size: 12px;}
 
-.icon-font-cl-suijibofang:before { content: "\e66b"; }
+.icon-font-cl-suijibofang:before { content: "\e66b"; color: white;font-size: 12px;}
 
 .icon-font-cl-xunhuanbofang:before { content: "\e66c"; }
 

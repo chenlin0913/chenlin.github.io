@@ -81,3 +81,13 @@ export const setIsThereAnyLyric = (state,payload) =>{
 	state.lyrics.isThereAnyLyric = payload.isThereAnyLyric;
 }
 
+/**
+ * 设置当前音乐播放详情信息
+ */
+export const setMusicDetail = (state,payload) =>{
+	state.current.detail.al = payload.detail.songs[0].al;
+	state.current.detail.ar = payload.detail.songs[0].ar;
+	state.current.detail.name = payload.detail.songs[0].name;
+}
+
+

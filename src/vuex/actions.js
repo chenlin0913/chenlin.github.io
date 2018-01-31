@@ -1,5 +1,7 @@
-import vue from 'vue'
 import Static from '@/common/PublicStatic'
+import ajax from '@/utils/apis'
+import * as getState from '@/vuex/getters'
+
 
 export const  increment = ({commit}) => {
   	commit('increment');
@@ -52,6 +54,10 @@ export const setPlayTime = ({commit},payload) =>{
  */
 export const setMusicId = ({commit},payload) =>{
 	commit('setMusicId',{id:payload.data});
+	ajax.get('/song/detail',{ids:payload.data}).then((response) =>{
+		console.log(response.data);
+		commit('setMusicDetail',{detail:response.data})
+	})
 }
 
 /**
@@ -68,8 +74,8 @@ export const setPlayUrl = ({commit},payload) =>{
 /**
  * 设置当前音乐播放状态
  */
-export const setPlayState = ({commit},payload) =>{
-	if(payload.data){
+export const setPlayState = ({commit,rootState},payload) =>{
+	if(payload.data && rootState.current.playUrl !=""){
 		document.getElementById('audioPlay').play();
 	}else{
 		document.getElementById('audioPlay').pause();
@@ -82,6 +88,13 @@ export const setPlayState = ({commit},payload) =>{
  */
 export const setIsThereAnyLyric = ({commit},payload) =>{
 	commit('setIsThereAnyLyric',{isThereAnyLyric:payload.data})
+}
+
+/**
+ * 设置当前音乐播放详情信息
+ */
+export const setMusicDetail = ({commit},payload) =>{
+	commit('setMusicDetail',{detail:payload.data})
 }
 
 

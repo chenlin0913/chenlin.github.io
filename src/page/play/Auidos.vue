@@ -1,36 +1,31 @@
 <template>
-	<div>
+	<div style="background-color: #313030; width: 100%;">
 		<el-row :gutter="0">
-			<el-col :xs="1" :sm="1" :md="1" :lg="1" :xl="1">
-				<div class="grid-content bg-purple">
-					<i class="iconfont icon-font-cl-shangyishou2"></i>
-				</div>
+			<el-col :xs="3" :sm="3" :md="3" :lg="3" :xl="3" class="cl-music-play3">
+				<i class="iconfont icon-font-cl-shangyishou2 cl-music-pointer"></i>
+				<i :class="playState?'iconfont icon-font-cl-ai07 cl-music-pointer':'iconfont icon-font-cl-bofang2 cl-music-pointer'" @click="togglePlay"></i>
+				<i class="iconfont icon-font-cl-xiayishou4 cl-music-pointer"></i>
 			</el-col>
-			<el-col :xs="1" :sm="1" :md="1" :lg="1" :xl="1">
-				<div class="grid-content bg-purple">
-					<i :class="playState?'iconfont icon-font-cl-ai07':'iconfont icon-font-cl-bofang2'" @click="togglePlay"></i>
-				</div>
+			<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" class="cl-music-frameimgs">
+					<FrameMin></FrameMin>
 			</el-col>
-			<el-col :xs="1" :sm="1" :md="1" :lg="1" :xl="1">
-				<div class="grid-content bg-purple">
-					<i class="iconfont icon-font-cl-xiayishou4"></i>
-				</div>
-			</el-col>
-			<el-col :xs="13" :sm="13" :md="13" :lg="13" :xl="13">
-				<div class="grid-content bg-purple-light">
+			<el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
 					<el-slider v-model="mwidth" @change="setTime" :max="100" :show-tooltip="false"></el-slider>
-				</div>
 			</el-col>
-			<el-col :xs="3" :sm="3" :md="3" :lg="3" :xl="3">
-				<div class="grid-content bg-purple-light times-cl">{{start}}/{{end}}</div>
+			<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" class="cl-music-timer3">
+				&nbsp;{{start}}/{{end}}&nbsp;
 			</el-col>
-			<el-col :xs="3" :sm="3" :md="3" :lg="3" :xl="3">
-				<el-slider v-model="volume" :show-tooltip="false" @change="setVolume"></el-slider>
+			<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" class="cl-music-speaker">
+				<i :class="mutedshow?'iconfont icon-font-cl-mute_icon cl-music-pointer':'iconfont icon-font-cl-laba3 cl-music-pointer'" @click="muted"></i>&nbsp;
 			</el-col>
-			<el-col :xs="1" :sm="1" :md="1" :lg="1" :xl="1">
-				<div class="grid-content bg-purple-light">
-					<i :class="mutedshow?'iconfont icon-font-cl-mute_icon':'iconfont icon-font-cl-laba3'" @click="muted"></i>
-				</div>
+			<el-col :xs="3" :sm="3" :md="3" :lg="3" :xl="3" >
+				<el-slider v-model="volume" :show-tooltip="false" @change="setVolume" class="cl-music-cl-volume"></el-slider>
+			</el-col>
+			<el-col :xs="1" :sm="1" :md="1" :lg="1" :xl="1" class="cl-music-col1">
+				<i class="iconfont icon-font-cl-suijibofang cl-music-pointer"></i>
+			</el-col>
+			<el-col :xs="1" :sm="1" :md="1" :lg="1" :xl="1" class="cl-music-col1">
+				<i class="iconfont icon-font-cl-swticonyinle2 cl-music-pointer" @click="playList"></i>
 			</el-col>
 			<audio @timeupdate="updateTime"  id="audioPlay" :src="musicUrl" autoplay loop></audio>
 		</el-row>
@@ -43,6 +38,7 @@
 	import { Slider, Card } from 'element-ui'
 	import { changeTime } from '@/common/ChangeTime'
 	import Lrc from '@/common/AnalysisLrc'
+	import FrameMin from '@/page/frame/FrameMin'
 	
 	export default {
 		name: 'Auidos',
@@ -69,6 +65,7 @@
 		components: {
 			Slider,
 			Card,
+			FrameMin
 		},
 		watch: {
 			/**
@@ -127,6 +124,12 @@
 				var num = new Number(value.toFixed(1));
 				document.getElementById('audioPlay').volume = num;
 				this.volume = num;
+			},
+			/**
+			 * 播放列表
+			 */
+			playList(){
+				
 			}
 		}
 	}
@@ -152,5 +155,45 @@
 	.grid-content {
 		border-radius: 4px;
 		min-height: 36px;
+	}
+	
+	.cl-music-frameimgs{
+		width: 6.7%;
+	}
+	
+	.cl-music-play3{
+		width: 9.5%;
+		line-height: 33px;
+	}
+	
+	.cl-music-timer3{
+		font-size: 6px;
+		color: #a1a1a1;
+		line-height: 38px;
+	}
+	
+	.cl-music-speaker{
+		line-height: 35px;
+		width: 4.33333%;
+	}
+	
+	.cl-music-cl-volume{
+		width: 60%;
+	}
+	
+	.el-slider__button{
+		border: 2px solid #ccc;
+	}
+	
+	.el-slider__runway{
+		background-color: #535353;
+	}
+	
+	.el-slider__bar{
+		background-color: #C20C0C;
+	}
+	
+	.cl-music-col1{
+		line-height: 35px;
 	}
 </style>
