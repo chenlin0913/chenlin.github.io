@@ -4,7 +4,9 @@ import axios from 'axios'
 import qs from 'qs'
 import { Message, MessageBox } from 'element-ui'
 
-const baseURLs = 'http://47.94.16.170:3000';
+//const baseURLs = 'http://music.163.com/api';
+const baseURLs = '/apis';
+console.log(baseURLs);
 
 axios.interceptors.request.use(config => {
 	// loading
@@ -55,7 +57,11 @@ export default {
 			timeout: 10000,
 			headers: {
 				'X-Requested-With': 'XMLHttpRequest',
-				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+				'Access-Control-Allow-Origin':'*',
+				'Access-Control-Allow-Methods':'POST',
+				'Access-Control-Allow-Headers':'x-requested-with,content-type',
+//				'X-Real-IP':'211.161.244.70'
 			}
 		}).then(
 			(response) => {
@@ -76,7 +82,11 @@ export default {
 			timeout: 10000,
 			headers: {
 				'X-Requested-With': 'XMLHttpRequest',
-				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+				'Access-Control-Allow-Origin':'*',
+				'Access-Control-Allow-Methods':'POST',
+				'Access-Control-Allow-Headers':'x-requested-with,content-type',
+//				'X-Real-IP':'211.161.244.70'
 			}
 		}).then(
 			(response) => {

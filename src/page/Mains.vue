@@ -1,20 +1,6 @@
 <template>
 	<div>
 		<el-container>
-			<el-header>
-				<!--Header-->
-				<el-row class="cl-header-botton">
-					<el-col :xs="5" :sm="5" :md="5" :lg="5" :xl="5">
-						<div class="cl-music-logo"></div>
-					</el-col>
-					<el-col :xs="15" :sm="15" :md="15" :lg="15" :xl="15">
-						<Menu></Menu>
-					</el-col>
-					<el-col :xs="5" :sm="5" :md="5" :lg="5" :xl="5">
-						<Search></Search>
-					</el-col>
-				</el-row>
-			</el-header>
 			<el-container>
 				<transition v-if="show" name="fade">
 					<el-aside width="205px">
@@ -26,17 +12,18 @@
 				<el-container>
 					<el-main>
 						<!--Main-->
-						<el-carousel :interval="4000" type="card" height="250px">
-							<el-carousel-item v-for="(item,index) in banner" :key="index">
-								<img :src="item.pic" width="100%" height="100%" />
-							</el-carousel-item>
-						</el-carousel>
+						<template>
+							<el-carousel :interval="4000" type="card" height="250px">
+								<el-carousel-item v-for="(item,index) in banner" :key="index">
+									<img v-lazy="item.pic" width="100%" height="100%" />
+								</el-carousel-item>
+							</el-carousel>
+							<div style="background-color: white;">
+								<el-row><HotRecommend></HotRecommend></el-row>
+								<el-row><SongList></SongList></el-row>
+							</div>
+						</template>
 					</el-main>
-					<el-footer>
-						<!--Footer controls="controls"-->
-						<LyricsMin></LyricsMin>
-						<Auidos></Auidos>
-					</el-footer>
 				</el-container>
 			</el-container>
 		</el-container>
@@ -44,13 +31,10 @@
 </template>
 
 <script>
-	import { Aside, Header, Main, Footer, Button, Tree } from 'element-ui'
-	import CommonData from '@/common/CommonData'
-	import Auidos from '@/page/play/Auidos'
+	import { Aside, Main, Button, Tree} from 'element-ui'
+	import HotRecommend from '@/page/song/HotRecommend'
+	import SongList from '@/page/song/SongList'
 	import LyricsMax from '@/page/lyrics/LyricsMax'
-	import LyricsMin from '@/page/lyrics/LyricsMin'
-	import Menu from '@/page/Menu'
-	import Search from '@/page/search/Search'
 
 	export default {
 		name: 'Mains',
@@ -58,7 +42,7 @@
 			return {
 				show: false,
 				banner: '',
-				treeData: CommonData.vipTree,
+				treeData: this.$commonData.vipTree,
 				defaultTree: {
 					children: 'children',
 					label: 'label'
@@ -66,24 +50,28 @@
 			}
 		},
 		created() {
-			console.log();
-			this.$axioss.get('/banner').then((response) => {
-				console.log(response.data);
+//			this.$axioss.get('/login/cellphone',{phone:'',password:'',proxy:'http://121.196.226.246:84'}).then((response) => {
+//				console.log(response.data);
+//			});
+			this.$axioss.post('api/playlist/hottags',{limit:5}).then((response) =>{
+				console.log(response)
+			});
+			this.$axioss.post('/api/v2/banner/get',{timeStamp:new Date()}).then((response) => {
 				this.banner = response.data.banners;
-			})
+			});
+			this.$axioss.post('api/playlist/highquality/list',{limit:8}).then((response) =>{
+				console.log(response)
+				this.$store.commit('setSong',{song:response.data});
+			});
 		},
 		components: {
 			Aside,
-			Header,
 			Main,
-			Footer,
 			Button,
-			Auidos,
 			LyricsMax,
-			LyricsMin,
 			Tree,
-			Menu,
-			Search
+			HotRecommend,
+			SongList
 		},
 		methods: {
 			handleNodeClick(val) {
@@ -94,13 +82,6 @@
 </script>
 
 <style>
-	.el-header,
-	.el-footer {
-		background-color: #242424;
-		color: #333;
-		text-align: center;
-	}
-	
 	.el-aside {
 		background-color: #242424;
 		color: #333;
@@ -112,7 +93,7 @@
 		background-color: #242424;
 		color: #333;
 		text-align: center;
-		padding: 10px;
+		padding: 0 !important;
 	}
 	
 	body>.el-container {
@@ -157,8 +138,5 @@
 	}
 	.el-menu--horizontal{
 		border: none;
-	}
-	.el-footer{
-		padding: 0;
 	}
 </style>

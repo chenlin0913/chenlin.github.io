@@ -1,12 +1,21 @@
 <template>
   <div id="app">
+  	<Header></Header>
     <router-view/>
+    <Bottom></Bottom>
   </div>
 </template>
 
 <script>
+	import Header from './components/common/Header'
+	import Bottom from './components/common/Bottom'
+	
 export default {
-  name: 'App'
+  name: 'App',
+  components:{
+  	Header,
+  	Bottom
+  }
 }
 </script>
 
@@ -26,6 +35,6 @@ input{border:0;outline:none;}
 		font-size: 10px;
 	}
 	.highBright{
-		color:#789ce4;
+		color:#fff;
 	}
 </style>

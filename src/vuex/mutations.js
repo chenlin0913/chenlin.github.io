@@ -35,6 +35,7 @@ export const setCurrentTimes = (state,payload) =>{
 export const setStartAndEndTime = (state,payload) =>{
 	state.lyrics.startTimes = payload.startTimes;
 	state.lyrics.endTimes = payload.endTimes;
+	state.current.detail.publishTime = payload.endTimes;
 }
 
 /**
@@ -88,6 +89,13 @@ export const setMusicDetail = (state,payload) =>{
 	state.current.detail.al = payload.detail.songs[0].al;
 	state.current.detail.ar = payload.detail.songs[0].ar;
 	state.current.detail.name = payload.detail.songs[0].name;
+}
+
+/**
+ * 设置热门推荐歌单数据
+ */
+export const setSong = (state,payload) =>{
+	state.song = payload.song;
 }
 
 

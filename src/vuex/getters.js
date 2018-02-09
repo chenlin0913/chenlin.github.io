@@ -13,3 +13,5 @@ export const isThereAnyLyric = state =>state.lyrics.isThereAnyLyric
 export const al = state => state.current.detail.al
 export const ar = state => state.current.detail.ar
 export const palyName = state => state.current.detail.name
+export const publishTime = state => state.current.detail.publishTime
+export const song = state => state.song

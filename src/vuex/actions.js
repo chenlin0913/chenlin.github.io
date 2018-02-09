@@ -22,7 +22,6 @@ export const updateLoadingStatus = ({commit},payload) =>{
  * 设置歌词
  */
 export const setfromatLyrics = ({commit},payload) =>{
-	console.log(payload);
 	commit('setfromatLyrics',{lyricsData:payload.data});
 	commit('setIsThereAnyLyric',{isThereAnyLyric:payload.lyricsFalg});
 }
@@ -53,9 +52,9 @@ export const setPlayTime = ({commit},payload) =>{
  * 设置当前音乐播放ID
  */
 export const setMusicId = ({commit},payload) =>{
+	console.log(payload.data)
 	commit('setMusicId',{id:payload.data});
-	ajax.get('/song/detail',{ids:payload.data}).then((response) =>{
-		console.log(response.data);
+	ajax.post('api/v3/song/detail',{ids:payload.data,c:JSON.stringify([{ id: payload.data }]),csrf_token:''}).then((response) =>{
 		commit('setMusicDetail',{detail:response.data})
 	})
 }
@@ -95,6 +94,15 @@ export const setIsThereAnyLyric = ({commit},payload) =>{
  */
 export const setMusicDetail = ({commit},payload) =>{
 	commit('setMusicDetail',{detail:payload.data})
+}
+
+/**
+ * 设置热门推荐歌单数据
+ */
+export const setSong = ({commit},payload) =>{
+	ajax.post('api/top/playlist/highquality',{cat:payload.data,limit:12}).then((response) =>{
+		commit('setSong',{song:response.data});
+	})
 }
 
 

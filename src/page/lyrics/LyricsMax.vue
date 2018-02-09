@@ -55,10 +55,9 @@
 
 <style>
 	.box-card-lyrics{
-		font-size: 12px;
-		height: 150px;
+		font-size: 10px;
 	}
 	.box-card-lyrics li{
-		line-height: 18px;
+		line-height: 19px;
 	}
 </style>

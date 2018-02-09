@@ -105,11 +105,11 @@ let Lrc = {
 	},
 	//计算歌词动画位置
 	compLyricPos: function(val, box) {
-//		if(box[0][1]) {
-//			if(box[0][1] == "获取歌词失败!" || box[0][1] == "歌词加载中!") {
-//				return .6 + 'rem';
-//			}
-//		}
+		//		if(box[0][1]) {
+		//			if(box[0][1] == "获取歌词失败!" || box[0][1] == "歌词加载中!") {
+		//				return .6 + 'rem';
+		//			}
+		//		}
 		if(box.length > 1) {
 			for(let i = 0; i < box.length; i++) {
 				if(val >= box[i][0] && val <= box[i + 1][0]) {
@@ -119,6 +119,21 @@ let Lrc = {
 				}
 			}
 		}
+	},
+	/**
+	 * 歌曲总时长
+	 * @param {Object} time
+	 */
+	changeTime: function(time) {
+		var minute = parseInt(time / 60);
+		if(minute < 10) {
+			minute = '0' + minute;
+		}
+		var secound = parseInt(time % 60);
+		if(secound < 10) {
+			secound = '0' + secound;
+		}
+		return minute + ':' + secound;
 	}
 }
 

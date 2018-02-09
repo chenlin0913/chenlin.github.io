@@ -27,8 +27,10 @@
 		},
 		methods: {
 			querySearchAsync(queryString, callbacks) {
-				this.$axioss.get('/search', {
-					keywords: queryString,
+				this.$axioss.post('/api/search/pc', {
+					offset:0,
+					type:1,
+					s: queryString,
 					limit: 10
 				}).then((response) => {
 					console.log(response.data);
@@ -47,9 +49,14 @@
 				this.$store.dispatch('setPlayUrl', {
 					id: item.id
 				});
-				this.$axioss.get('/lyric', {
-					id: item.id
+				this.$axioss.post('/api/song/lyric', {
+					id: item.id,
+					os:'pc',
+					lv:-1,
+					kv:-1,
+					tv:-1
 				}).then((response) => {
+					console.log(response);
 					this.$store.dispatch('setfromatLyrics', {
 						data: response.data.lrc ? response.data.lrc.lyric : [],
 						lyricsFalg: response.data.lrc ? true : false

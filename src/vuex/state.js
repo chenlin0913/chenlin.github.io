@@ -9,6 +9,7 @@ const state = {
 			al:{picUrl:'static/img/player-bar.png'},//id:播放歌曲详情ID,name:播放歌曲详情类型名称,pic:播放歌曲详情图片ID,picUrl:播放歌曲详情图片
 			ar:{},//id:播放歌曲详情id,name:播放歌曲详情演唱者
 			name:'',//播放歌曲详情名称
+			publishTime:'',//歌曲时长
 		}
 	},
 	lyrics:{
@@ -21,6 +22,7 @@ const state = {
 	lyricsMTop:'0rem',//显示全部歌词
 	playTime:0,//播放进度
 	volume:0.4,//播放音量
+	song:[],//热门推荐
 }
 
 export default state;

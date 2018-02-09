@@ -10,23 +10,22 @@
 </template>
 
 <script>
-	import { Tabs, Menu } from 'element-ui'
+	import { Menu } from 'element-ui'
 	
 
 	export default {
 		name: 'Menu',
 		data() {
 			return {
-				activeIndex: '1',
+				activeIndex: '1'
 			}
 		},
 		components: {
-			Tabs,
-			Menu
+			Menu,
 		},
 		methods: {
-			handleSelect(key, keyPath,event) {
-				
+			handleSelect(key, keyPath) {
+				this.$store.dispatch('setActiveIndex',{data:key});
 			}
 		}
 	}
