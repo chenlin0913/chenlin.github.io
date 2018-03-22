@@ -4,7 +4,7 @@ import axios from 'axios'
 import qs from 'qs'
 import { Message, MessageBox } from 'element-ui'
 
-//const baseURLs = 'http://music.163.com/api';
+//const baseURLs = 'http://music.163.com/';
 const baseURLs = '/apis';
 console.log(baseURLs);
 
@@ -57,7 +57,8 @@ export default {
 			timeout: 10000,
 			headers: {
 				'X-Requested-With': 'XMLHttpRequest',
-				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8;',
+				'Content-Type': 'multipart/form-data',
 				'Access-Control-Allow-Origin':'*',
 				'Access-Control-Allow-Methods':'POST',
 				'Access-Control-Allow-Headers':'x-requested-with,content-type',
@@ -83,6 +84,7 @@ export default {
 			headers: {
 				'X-Requested-With': 'XMLHttpRequest',
 				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+				'Content-Type': 'multipart/form-data',
 				'Access-Control-Allow-Origin':'*',
 				'Access-Control-Allow-Methods':'POST',
 				'Access-Control-Allow-Headers':'x-requested-with,content-type',

@@ -100,7 +100,7 @@ export const setMusicDetail = ({commit},payload) =>{
  * 设置热门推荐歌单数据
  */
 export const setSong = ({commit},payload) =>{
-	ajax.post('api/top/playlist/highquality',{cat:payload.data,limit:12}).then((response) =>{
+	ajax.post('api/playlist/highquality/list',{cat:payload.data,limit:8}).then((response) =>{
 		commit('setSong',{song:response.data});
 	})
 }

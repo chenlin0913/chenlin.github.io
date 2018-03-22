@@ -45,3 +45,12 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+router.beforeEach((to,from,next)=>{
+//		let loginFlag = JSON.parse(sessionStorage.getItem("isLogin")); //获取登录状态
+//	  if (to.meta.login && !loginFlag) {//判断进入的路由功能模块是否需要登录并且当前是出处于已登录状态
+//	    next({path:'../common/login',query:{fromUrl:from.path}});
+//	  }else{
+//	    next();
+//	  }
+});

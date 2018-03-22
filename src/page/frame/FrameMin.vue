@@ -1,35 +1,43 @@
 <template>
 	<div class="frameMin cl-music-pointer">
-		<img :src="urlImg" class="minimg"/>
+		<img v-lazy="urlImg" class="minimg" @click.prevent="detail" />
 	</div>
 </template>
 
 <script>
-	import {mapState} from 'vuex'
-	
-	export default{
-		name:'FrameMin',
-		computed:{
+	import { mapState } from 'vuex'
+
+	export default {
+		name: 'FrameMin',
+		computed: {
 			...mapState({
-				urlImg:state => state.current.detail.al.picUrl,
-				name:state =>state.current.detail.name
+				urlImg: state => state.current.detail.al.picUrl,
+				name: state => state.current.detail.name,
+				id: state => state.current.id
 			})
 		},
-		created(){
+		created() {
 			
+		},
+		methods: {
+			detail() {
+				this.$axioss.post('api/playlist/detail',{id:this.id}).then((response) =>{
+					console.log(response.data)
+				});
+			}
 		}
-		
 	}
 </script>
 
 <style>
-	.frameMin{
+	.frameMin {
 		border: #000000 1px solid;
 		width: 34px;
-    	height: 35px;
+		height: 35px;
 	}
-	.minimg{
+	
+	.minimg {
 		width: 100%;
-    	height: 100%;
+		height: 100%;
 	}
 </style>

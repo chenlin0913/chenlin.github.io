@@ -7,6 +7,7 @@ Vue.use(Router)
 Vue.use(Vuex)
 
 const router = new Router({
+	mode: 'history',
 	routes: [{
 			path: '/',
 			name: 'Mains',
@@ -21,6 +22,11 @@ const router = new Router({
 			path: '/Counter',
 			name: 'Counter',
 			component: resolve => require(['@/page/Counter'], resolve),
+		},
+		{
+			path: '/MusicDetail',
+			name: 'MusicDetail',
+			component: resolve => require(['@/page/MusicDetail'], resolve),
 		},
 		{
 			path: '/Login',

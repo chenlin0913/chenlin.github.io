@@ -6,8 +6,8 @@
 <template>
 	<el-breadcrumb separator="|">
 		<el-row class="cl-music-plist-size cl-music-hotrow">
-			<el-col :span="2" style="font-size: 11px; color: #666; font-weight: 600;">
-				热门推荐
+			<el-col :span="2" style="font-size: 11px; color: #666; font-weight: 600;cursor: pointer;">
+				<span @click="getSong('全部')">热门推荐</span>
 			</el-col>
 			<el-col :span="14" class="cl-music-pointer">
 				<el-breadcrumb-item class="cl-music-breadlist" v-for="(item,index) in list" :key="index">

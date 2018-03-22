@@ -5,6 +5,7 @@ module.exports = {
 			//          target: 'http://47.94.16.170:3000',  // 网易接口1
 			//          target: 'http://192.168.51.46:3000',  // 网易接口1
 			target: 'http://music.163.com/', // 网易接口1
+//			target:'http://10.38.249.62:8010/sell/file/uplod/',
 			changeOrigin: true, //是否跨域
 			pathRewrite: {
 				'^/apis': '' //需要rewrite重写的,
